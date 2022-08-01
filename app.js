@@ -13,7 +13,7 @@ const optionNodelist = document.querySelectorAll(".option")
 const userTextground = document.querySelector(".userplayground")
 const optionArray = [...optionNodelist]
 let randomSentance, checkclickedtiming, showTimerin, timeduration, selectedplace, selectedtimer, timer, timerstate, checkwritingstate;
-let apitextArray;
+let apitextArray, Span;
 let apiarrayIndex = 0;
 praentOption.addEventListener("click", (e) => {
         const btn = e.target.dataset.js;
@@ -66,7 +66,8 @@ praentOption.addEventListener("click", (e) => {
 function doUnderline(sentance) {
         const singleAlphabet = sentance.split("")
         const addSpan = singleAlphabet.forEach(ele => {
-                const Span = document.createElement("SPAN")
+
+                Span = document.createElement("SPAN")
                 Span.innerText = ele;
                 apiText.appendChild(Span)
         })
@@ -79,34 +80,47 @@ function checkwrite() {
                 Timerstart(timeduration, showTimerin)
         }
         userTextground.removeEventListener("keydown", checkwrite);
-        
+
 }
-const keywords = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-" ", "Backspace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+const keywords = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
+        "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e",
+        "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "Backspace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+        "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "="]
 // function for contiune writing
-userTextground.addEventListener("keydown", nextlineshow)
 function nextlineshow(e) {
         if (keywords.includes(e.key)) {
+                console.log(e.key);
                 apitextArray = [...apiText.textContent]
                 if (apitextArray.length - 1 === apiarrayIndex) {
                         apiarrayIndex = 0;
+                        apiText.textContent = '';
                         randomSentance = storyArray[Math.floor(Math.random() * storyArray.length)];
                         doUnderline(randomSentance)
                 } else if (e.keyCode === 8) {
+
                         if (userTextground.value != "" && (apiarrayIndex !== 0)) {
                                 apiarrayIndex--;
-                                console.log("kjdfs");
+                                const addnow = apiText.children[apiarrayIndex];
+                                addnow.classList.remove("underlineGreen")
+                                addnow.classList.remove("underlineRed")
 
                         }
+
                 } else {
+                        const addnow = apiText.children[apiarrayIndex];
+                        // console.log(apiText.children)
+                        // console.log(addnow)
+                        const check = (apitextArray[apiarrayIndex] == e.key);
+                        (check)?addnow.classList.add("underlineGreen"):addnow.classList.add("underlineRed");
                         apiarrayIndex++;
                 }
-                console.log(apitextArray[apiarrayIndex - 1]);
-                console.log(e.key);
-                console.log(apiarrayIndex);
+                // console.log(apitextArray[apiarrayIndex - 1]);
+                // console.log(apiarrayIndex);
+                // console.log(check);
         };
 }
 
+userTextground.addEventListener("keydown", nextlineshow)
 
 
 // ====== Timer Fuction =====

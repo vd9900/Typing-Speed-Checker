@@ -155,8 +155,9 @@
     text-decoration:underline;
     text-decoration-color:green;
 }
-.underlineGreen{
-
+.underlineRed{
+    text-decoration:underline;
+    text-decoration-color:red;
 }
 @media print{
     p{
