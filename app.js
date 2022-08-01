@@ -1,17 +1,5 @@
-const story = `Sam and Tom were identical twins. They were so identical that even their mother found it difficult to distinguish one from the other, at least during their initial days on earth.
-
-However, they were very different from each other when it came to everything other than their appearance. Sam had no friends, while Tom was a great friendship maker. Sam loved sweets, but Tom loved spicy food and detested sweets. Sam was mommy’s pet and Tom was daddy’s pet. While Sam was generous and selfless, Tom was greedy and selfish!
-
-As Sam and Tom grew up, their father wanted to share his fortune equally amongst them. However, Tom did not agree and he argued that whoever proved to be more intelligent and strong would have to get a bigger share of the wealth.
-
-Sam agreed. Their father decided to organize a competition between the two. He asked the two sons to walk as long as they could, and return home before sunset. The wealth would be divided in proportion to the distance covered. As a rule of the competition, they were not permitted to carry a watch to keep track of the time.
-
-The following day, Sam and Tom set out to walk. It was a rather sunny day. Sam walked slowly and steadily, while Tom broke into a sprint as he was bent on winning the race and also winning a greater portion of his father’s wealth.
-
-Sam knew that it would be ideal to walk as far as possible till noon and start for home at noon as it would take the same amount of time to walk back home. Knowing this, Sam decided to turn back for home at noon so as reach home on time.
-
-However, Tom, with his greed to earn more wealth, did not attempt to return home even after mid-noon. He walked twice as long as Sam, and thought he would still be able to return home before sunset. He hurried back when he saw the sun turn orange. Unfortunately, he could not even make it half way home as the sun started to set. Slowly darkness engulfed his path and he had to drag his tired feet back home.
-
+const story = `Sam and Tom were identical twins. They were so identical that even their mother found it difficult to distinguish one from the other, at least during their initial days on earth.However, they were very different from each other when it came to everything other than their appearance. Sam had no friends, while Tom was a great friendship maker. Sam loved sweets, but Tom loved spicy food and detested sweets. Sam was mommy’s pet and Tom was daddy’s pet. While Sam was generous and selfless, Tom was greedy and selfish!
+As Sam and Tom grew up, their father wanted to share his fortune equally amongst them. However, Tom did not agree and he argued that whoever proved to be more intelligent and strong would have to get a bigger share of the wealth.Sam agreed. Their father decided to organize a competition between the two. He asked the two sons to walk as long as they could, and return home before sunset. The wealth would be divided in proportion to the distance covered. As a rule of the competition, they were not permitted to carry a watch to keep track of the time.The following day, Sam and Tom set out to walk. It was a rather sunny day. Sam walked slowly and steadily, while Tom broke into a sprint as he was bent on winning the race and also winning a greater portion of his father’s wealth.Sam knew that it would be ideal to walk as far as possible till noon and start for home at noon as it would take the same amount of time to walk back home. Knowing this, Sam decided to turn back for home at noon so as reach home on time.However, Tom, with his greed to earn more wealth, did not attempt to return home even after mid-noon. He walked twice as long as Sam, and thought he would still be able to return home before sunset. He hurried back when he saw the sun turn orange. Unfortunately, he could not even make it half way home as the sun started to set. Slowly darkness engulfed his path and he had to drag his tired feet back home.
 He had lost the race. Only because of his greed.Greed leads to loss.`
 const storyArray = story.split('. ')
 // console.log(storyArray);
@@ -25,13 +13,16 @@ const optionNodelist = document.querySelectorAll(".option")
 const userTextground = document.querySelector(".userplayground")
 const optionArray = [...optionNodelist]
 let randomSentance, checkclickedtiming, showTimerin, timeduration, selectedplace, selectedtimer, timer, timerstate, checkwritingstate;
-
+let apitextArray;
+let apiarrayIndex = 0;
 praentOption.addEventListener("click", (e) => {
         const btn = e.target.dataset.js;
         if (btn == "btn4") {
+                apiarrayIndex = 0;
                 timerstate = false;
                 // alert("kljfdj")
                 checkclickedtiming = false;
+                apitextArray = [];
                 clearInterval(timer)
                 userTextground.addEventListener("keydown", checkwrite)
                 userTextground.value = "";
@@ -50,7 +41,10 @@ praentOption.addEventListener("click", (e) => {
                         userTextground.focus();
                         // console.log(sentance);
                         randomSentance = storyArray[Math.floor(Math.random() * storyArray.length)];
-                        apiText.innerText = randomSentance;
+                        // apiText.innerText = randomSentance;
+                        doUnderline(randomSentance);
+
+
                         showTimerin = e.target;
                         timeduration = e.target.dataset.time;
                         showTimerin.classList.add("selected")
@@ -69,6 +63,14 @@ praentOption.addEventListener("click", (e) => {
 
 // function for writing
 
+function doUnderline(sentance) {
+        const singleAlphabet = sentance.split("")
+        const addSpan = singleAlphabet.forEach(ele => {
+                const Span = document.createElement("SPAN")
+                Span.innerText = ele;
+                apiText.appendChild(Span)
+        })
+}
 
 function checkwrite() {
         // alert("b")
@@ -77,43 +79,38 @@ function checkwrite() {
                 Timerstart(timeduration, showTimerin)
         }
         userTextground.removeEventListener("keydown", checkwrite);
-
+        
 }
-
+const keywords = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+" ", "Backspace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 // function for contiune writing
-let i = 0;
-function nextlineshow(apiline) {
-        let previousLineArray = apiline.split(' ')
-        // console.log(previousLineArray);
-        previousLineArray.forEach(word => {
-                Alphet = word.split('' && ' ')
-                Alphet.forEach(A => {
-                        Span = document.createElement("SPAN")
-                        Span.innerHTML = A;
-                        apiText.appendChild(Span)
-                        // console.log(A)
-                        console.log(userTextground.value);
+userTextground.addEventListener("keydown", nextlineshow)
+function nextlineshow(e) {
+        if (keywords.includes(e.key)) {
+                apitextArray = [...apiText.textContent]
+                if (apitextArray.length - 1 === apiarrayIndex) {
+                        apiarrayIndex = 0;
+                        randomSentance = storyArray[Math.floor(Math.random() * storyArray.length)];
+                        doUnderline(randomSentance)
+                } else if (e.keyCode === 8) {
+                        if (userTextground.value != "" && (apiarrayIndex !== 0)) {
+                                apiarrayIndex--;
+                                console.log("kjdfs");
 
-                });
-                // console.log(userTextground.value);
-                //        (word !== userTextground.value)?console.log(true):console.log(false);;
-        });
-        // userTextground.addEventListener("change", nextlineshow(apiText.innerText))
-        //         // console.log(userwordsLineArray);
-        //         let lastWord = previousLineArray[previousLineArray.length - 1]
-        //         // console.log(lastWord);
-        //         let userLastWord = userwordsLineArray[userwordsLineArray.length - 1]
-        //         if (lastWord == userLastWord) {
-        //                 randomSentance = storyArray[Math.floor(Math.random()*storyArray.length)];
-        //                 apiText.innerHTML = randomSentance;
-        //         }
+                        }
+                } else {
+                        apiarrayIndex++;
+                }
+                console.log(apitextArray[apiarrayIndex - 1]);
+                console.log(e.key);
+                console.log(apiarrayIndex);
+        };
 }
 
 
 
 // ====== Timer Fuction =====
 function Timerstart(time, place) {
-        userTextground.addEventListener("change", nextlineshow(apiText.innerText))
         timerstate = true;
         let i = 0;
         timer = setInterval(() => {
@@ -147,3 +144,25 @@ function Timerstart(time, place) {
 
 }
 
+
+
+
+// function King(name){
+//         this.name = name;
+//         this.draw = ()=> `Hello ${this.name}`
+// }
+// const KingVinith = new King("VINITH")
+// const KingVinith1 = new King("VINITH1")
+// // console.log(KingVinith.draw());
+// // console.log(KingVinith1.draw());
+
+// function order(food){
+//         return {
+//                 saysomething:()=> `do you like to eat ${food}`
+//         }
+// }
+
+// const samosa = order("samosa" )
+// const pizza = order("pizza" )
+// console.log(samosa.saysomething());
+// console.log(pizza.saysomething());
