@@ -12,12 +12,18 @@ const praentOption = document.querySelector(".nav__options")
 const userInput = document.querySelector(".username");
 const optionNodelist = document.querySelectorAll(".option")
 const userTextground = document.querySelector(".userplayground")
+const showUserName = document.querySelector(".result__block-1")
 const optionArray = [...optionNodelist]
 let randomSentance, checkclickedtiming, showTimerin, timeduration, selectedplace, selectedtimer, timer, timerstate, checkwritingstate;
 let apitextArray, Span;
 let apiarrayIndex = 0;
+
+
 praentOption.addEventListener("click", (e) => {
+        // console.log(userInput.value)
         const btn = e.target.dataset.js;
+        const isUserNameCheck = (userInput.value!="")?true:false;
+        if(!isUserNameCheck) alert("Enter your name first!!!")
         if (btn == "btn4") {
                 apiarrayIndex = 0;
                 timerstate = false;
@@ -37,7 +43,7 @@ praentOption.addEventListener("click", (e) => {
                 }
 
         }
-        if (!timerstate) {
+        if (!timerstate && isUserNameCheck) {
                 if (btn != "btn4" && e.target.tagName == "LI") {
                         userTextground.focus();
                         // console.log(sentance);
@@ -154,6 +160,7 @@ function Timerstart(time, place) {
                         if (optionArray[j] != place) {
                                 optionArray[j].classList.add("puse")
                                 optionArray[j].classList.remove("selected")
+                                showUserName.innerHTML = `User : ${userInput.value}`;
                         }
 
                 }
