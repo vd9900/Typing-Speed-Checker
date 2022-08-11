@@ -2,6 +2,7 @@ const story = `Sam and Tom were identical twins. They were so identical that eve
 As Sam and Tom grew up, their father wanted to share his fortune equally amongst them. However, Tom did not agree and he argued that whoever proved to be more intelligent and strong would have to get a bigger share of the wealth.Sam agreed. Their father decided to organize a competition between the two. He asked the two sons to walk as long as they could, and return home before sunset. The wealth would be divided in proportion to the distance covered. As a rule of the competition, they were not permitted to carry a watch to keep track of the time.The following day, Sam and Tom set out to walk. It was a rather sunny day. Sam walked slowly and steadily, while Tom broke into a sprint as he was bent on winning the race and also winning a greater portion of his father’s wealth.Sam knew that it would be ideal to walk as far as possible till noon and start for home at noon as it would take the same amount of time to walk back home. Knowing this, Sam decided to turn back for home at noon so as reach home on time.However, Tom, with his greed to earn more wealth, did not attempt to return home even after mid-noon. He walked twice as long as Sam, and thought he would still be able to return home before sunset. He hurried back when he saw the sun turn orange. Unfortunately, he could not even make it half way home as the sun started to set. Slowly darkness engulfed his path and he had to drag his tired feet back home.
 He had lost the race. Only because of his greed.Greed leads to loss.`
 const storyArray = story.split('. ')
+console.log(storyArray)
 // console.log(storyArray);
 const section1 = document.querySelector(".section1")
 const section2 = document.querySelector(".section2")
@@ -85,7 +86,7 @@ function checkwrite() {
 const keywords = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q",
         "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e",
         "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", "Backspace", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-        "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "="]
+        "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=",","]
 // function for contiune writing
 function nextlineshow(e) {
         if (keywords.includes(e.key)) {
