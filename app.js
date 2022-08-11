@@ -67,12 +67,14 @@ praentOption.addEventListener("click", (e) => {
 function doUnderline(sentance) {
         const singleAlphabet = sentance.split("")
         const addSpan = singleAlphabet.forEach(ele => {
-
+                
                 Span = document.createElement("SPAN")
                 Span.innerText = ele;
                 apiText.appendChild(Span)
         })
+
 }
+
 
 function checkwrite() {
         // alert("b")
