@@ -123,9 +123,6 @@ function nextlineshow(e) {
                         (check)?addnow.classList.add("underlineGreen"):addnow.classList.add("underlineRed");
                         apiarrayIndex++;
                 }
-                // console.log(apitextArray[apiarrayIndex - 1]);
-                // console.log(apiarrayIndex);
-                // console.log(check);
         };
 }
 
