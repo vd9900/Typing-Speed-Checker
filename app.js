@@ -168,21 +168,6 @@ function Timerstart(time, place) {
 
 
 
-// function King(name){
-//         this.name = name;
-//         this.draw = ()=> `Hello ${this.name}`
-// }
-// const KingVinith = new King("VINITH")
-// const KingVinith1 = new King("VINITH1")
-// // console.log(KingVinith.draw());
-// // console.log(KingVinith1.draw());
-
-// function order(food){
-//         return {
-//                 saysomething:()=> `do you like to eat ${food}`
-//         }
-// }
-
 // const samosa = order("samosa" )
 // const pizza = order("pizza" )
 // console.log(samosa.saysomething());
