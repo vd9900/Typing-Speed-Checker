@@ -164,11 +164,3 @@ function Timerstart(time, place) {
         }
 
 }
-
-
-
-
-// const samosa = order("samosa" )
-// const pizza = order("pizza" )
-// console.log(samosa.saysomething());
-// console.log(pizza.saysomething());
