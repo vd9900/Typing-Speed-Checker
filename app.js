@@ -3,7 +3,7 @@ As Sam and Tom grew up, their father wanted to share his fortune equally amongst
 He had lost the race. Only because of his greed.Greed leads to loss.`
 const storyArray = story.split('. ')
 console.log(storyArray)
-// console.log(storyArray);
+onsole.log(storyArray);
 const section1 = document.querySelector(".section1")
 const section2 = document.querySelector(".section2")
 const apiText = document.querySelector(".api__text")
