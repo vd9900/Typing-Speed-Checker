@@ -16,7 +16,7 @@
 
 //     }
 // }
-// let newPerson = new Person("vinith","coding","Full stack Developer");
+// let newPerson = new Person("vinith","coding","Full  Developer");
 // newPerson.namefun();
 // newPerson.habitfun();
 // newPerson.jobfun();
