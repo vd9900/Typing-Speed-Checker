@@ -45,7 +45,7 @@ praentOption.addEventListener("click", (e) => {
     apitextArray = [];
     clearInterval(timer);
     userTextground.addEventListener(
-      isMobileDevice ? "touchstart" : "keydown",
+      isMobileDevice ? "touchend" : "keydown",
       checkwrite
     );
     userTextground.value = "";
@@ -75,7 +75,7 @@ praentOption.addEventListener("click", (e) => {
       checkclickedtiming = true;
       timerstate = true;
       userTextground.addEventListener(
-        isMobileDevice ? "touchstart" : "keydown",
+        isMobileDevice ? "touchend" : "keydown",
         checkwrite
       );
       userTextground.classList.remove("puse");
@@ -103,7 +103,7 @@ function checkwrite() {
     Timerstart(timeduration, showTimerin);
   }
   userTextground.removeEventListener(
-    isMobileDevice ? "touchstart" : "keydown",
+    isMobileDevice ? "touchend" : "keydown",
     checkwrite
   );
 }
@@ -244,7 +244,7 @@ function nextlineshow(e) {
 }
 
 userTextground.addEventListener(
-  isMobileDevice ? "touchstart" : "keydown",
+  isMobileDevice ? "touchend" : "keydown",
   nextlineshow
 );
 
