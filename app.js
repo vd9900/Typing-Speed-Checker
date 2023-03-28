@@ -29,7 +29,7 @@ let randomSentance,
 let apitextArray, Span;
 let apiarrayIndex = 0;
 
-const isMobileDevice = /Mobi/.test(navigator.userAgent);
+const isMobileDevice =false// /Mobi/.test(navigator.userAgent);
 console.log(isMobileDevice);
 
 praentOption.addEventListener("click", (e) => {
@@ -45,7 +45,7 @@ praentOption.addEventListener("click", (e) => {
     apitextArray = [];
     clearInterval(timer);
     userTextground.addEventListener(
-      isMobileDevice ? "touchend" : "keydown",
+      isMobileDevice ? "input" : "keydown",
       checkwrite
     );
     userTextground.value = "";
@@ -75,7 +75,7 @@ praentOption.addEventListener("click", (e) => {
       checkclickedtiming = true;
       timerstate = true;
       userTextground.addEventListener(
-        isMobileDevice ? "touchend" : "keydown",
+        isMobileDevice ? "input" : "keydown",
         checkwrite
       );
       userTextground.classList.remove("puse");
@@ -103,7 +103,7 @@ function checkwrite() {
     Timerstart(timeduration, showTimerin);
   }
   userTextground.removeEventListener(
-    isMobileDevice ? "touchend" : "keydown",
+    isMobileDevice ? "input" : "keydown",
     checkwrite
   );
 }
@@ -196,6 +196,7 @@ let apiWord = "";
 let wpm_number = 0;
 let cwpm_number = 0;
 function nextlineshow(e) {
+  console.log(e);
   if (keywords.includes(e.key)) {
     // console.log(e.key);
     //     console.log(apitextArray);
@@ -244,9 +245,10 @@ function nextlineshow(e) {
 }
 
 userTextground.addEventListener(
-  isMobileDevice ? "touchend" : "keydown",
+  isMobileDevice ? "input" : "keydown",
   nextlineshow
 );
+userTextground.addEventListener("input", nextlineshow);
 
 // ====== Timer Fuction =====
 function Timerstart(time, place) {
