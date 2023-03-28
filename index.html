@@ -1,58 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Typing</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <main class="container flex-center">
-        <section class="section1">
-            <nav class="section1__nav flex-center">
-                <input type="text" class="username" autocomplete="none" placeholder="Enter your name">
-                <ul class="nav__options flex-center ">
-                    <li class="option op flex-center" data-js="btn1" data-defult='1min' data-time='60'>1min</li>
-                    <li class="option  flex-center" data-js="btn2" data-defult='45s' data-time="45">45s</li>
-                    <li class="option flex-center" data-js="btn3" data-defult='30s' data-time="10">30s</li>
-                    <li class="option flex-center" data-js="btn4">Reset</li>
-                </ul>
-            </nav>
-            <div class="section1__textground">
-                <div class="textground__block">
-
-                    <p class="api__text"></p>
-                </div>
-            </div>
-            <div class="section1__usertext">
-                <textarea name="testspeedtext" class="userplayground puse"></textarea>
-                <strong class="defulttext">Welcome to typing app
-                    <pre> Choose timer</pre>
-                    <pre>Start Writing</pre>
-                </strong>
-
-            </div>
-            <div class="container1__timebar">
-            </div>
-        </section>
-        <section class="section2 clsg">
-            <div class="section__result flex-center">
-                <div class="result__circle flex-center">
-                    98%
-                </div>
-                <div class="result__block flex-center">
-                    <span class=" result__box result__block-1">User:Unkwon </span>
-                    <span class=" result__box result__block-2">Taken Time: 45min</span>
-                    <span class=" result__box result__block-3">WPS/WPM : 45WPS</span>
-                </div>
-            </div>
-        </section>
-
+      <section class="section1">
+        <nav class="">
+          <div class="section1__nav flex-center">
+            <input
+              type="text"
+              class="username"
+              autocomplete="none"
+              placeholder="Enter your name"
+            />
+            <ul class="nav__options flex-center">
+              <li
+                class="option op flex-center"
+                data-js="btn1"
+                data-defult="1min"
+                data-time="60"
+              >
+                1min
+              </li>
+              <li
+                class="option flex-center"
+                data-js="btn2"
+                data-defult="45s"
+                data-time="45"
+              >
+                45s
+              </li>
+              <li
+                class="option flex-center"
+                data-js="btn3"
+                data-defult="30s"
+                data-time="10"
+              >
+                30s
+              </li>
+              <li class="option flex-center" data-js="btn4">Reset</li>
+            </ul>
+          </div>
+        </nav>
+        <div class="section1__textground">
+          <div class="textground__block">
+            <p class="api__text"></p>
+          </div>
+        </div>
+        <div class="section1__usertext">
+          <textarea
+            name="testspeedtext"
+            autocomplete="off"
+            class="userplayground puse"
+          ></textarea>
+          <div class="defulttext flex-center">
+            <span> Welcome to typing app </span>
+            <span> Choose timer</span>
+            <span>Start Writing</span>
+          </div>
+        </div>
+        <div class="container1__timebar"></div>
+      </section>
+      <section class="section2 clsg">
+        <div class="section__result flex-center">
+          <div class="result__block flex-center">
+            <span class="result__box result__block-1">User: </span>
+            <span class="result__box result__block-3">CWPM :</span>
+          </div>
+          <div class="btns">
+            <button>Play Again</button>
+            <button>Code</button>
+          </div>
+        </div>
+      </section>
     </main>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>
